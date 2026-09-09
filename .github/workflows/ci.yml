@@ -12,6 +12,21 @@ jobs:
   test-and-build:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_password
+          POSTGRES_DB: ask_abhinav_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U test_user -d ask_abhinav_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,11 +41,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r backend/requirements.txt
 
-      - name: Run tests
+      - name: Initialize database
         env:
+          DATABASE_URL: postgresql://test_user:test_password@localhost:5432/ask_abhinav_test
           PYTHONPATH: .
         run: |
-          pytest backend/tests
+          python backend/app/db/test_connection.py
+          python backend/app/db/seed_profile.py
+          python backend/app/db/seed_skills.py
+          python backend/app/db/seed_experience.py
+          python backend/app/db/seed_projects.py
+          python backend/app/db/seed_education.py
+
+      - name: Run tests
+        env:
+          DATABASE_URL: postgresql://test_user:test_password@localhost:5432/ask_abhinav_test
+          PYTHONPATH: .
+        run: |
+          python -m pytest backend/tests
 
       - name: Build Docker image
         run: |
