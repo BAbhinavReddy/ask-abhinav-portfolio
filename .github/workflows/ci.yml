@@ -53,12 +53,42 @@ jobs:
           python backend/app/db/seed_projects.py
           python backend/app/db/seed_education.py
 
-      - name: Run tests
+      - name: Start FastAPI
         env:
           DATABASE_URL: postgresql://test_user:test_password@localhost:5432/ask_abhinav_test
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
           PYTHONPATH: .
         run: |
-          python -m pytest backend/tests
+          nohup uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 > server.log 2>&1 &
+
+      - name: Wait for FastAPI
+        run: |
+          for i in {1..30}; do
+            if curl -f http://127.0.0.1:8000/api/health; then
+              echo "FastAPI is ready"
+              exit 0
+            fi
+            sleep 2
+          done
+
+          echo "FastAPI failed to start"
+          cat server.log
+          exit 1
+
+      - name: Run E2E tests
+        env:
+          DATABASE_URL: postgresql://test_user:test_password@localhost:5432/ask_abhinav_test
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
+          PYTHONPATH: .
+        run: |
+          python -m pytest backend/tests/e2e -v
+
+      - name: Show server logs
+        if: failure()
+        run: |
+          cat server.log
 
       - name: Build Docker image
         run: |
