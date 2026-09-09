@@ -1,0 +1,31 @@
+CURRENT EXPERIENCE
+
+Company: Intelligenie LLC
+Role: Software Engineer
+Start: February 2026
+
+Abhinav works primarily on Python backend development, APIs, and databases.
+
+His responsibilities include working with Python backend systems, developing
+and modifying APIs, working with databases, debugging application issues,
+and making changes across different projects.
+
+His work involves understanding existing backend code, troubleshooting
+problems, implementing changes, and working with API and database components.
+
+The portfolio should not claim responsibilities or technologies beyond what
+is documented in this knowledge base.
+
+
+PREVIOUS EXPERIENCE
+
+Company: EPAM Systems
+Role: Junior Software Engineer
+Period: January 2023 – June 2023
+
+Abhinav worked as a Junior Software Engineer, gaining professional software
+engineering experience and working with software development concepts and
+engineering workflows.
+
+Only information explicitly documented in the portfolio should be used when
+describing this experience.

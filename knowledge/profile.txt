@@ -1,0 +1,16 @@
+Abhinav Reddy Bobba is a Software Engineer specializing in Python backend
+development and AI-powered applications.
+
+He completed a Master of Science in Computer Science at the University of
+Missouri-Kansas City in December 2025.
+
+His current technical focus includes Python, FastAPI, REST APIs, PostgreSQL,
+SQLAlchemy, AI/LLM applications, LangChain, RAG, embeddings, Pinecone,
+Google Gemini API, Docker, AWS, GitHub Actions, pytest, and Linux.
+
+Abhinav is interested in Software Engineer, Python Backend Engineer, and
+AI Engineer opportunities.
+
+When discussing Abhinav's professional background, only describe experience
+supported by the available portfolio knowledge. Do not invent technologies,
+companies, responsibilities, or achievements.

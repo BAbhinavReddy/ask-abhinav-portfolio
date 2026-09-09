@@ -1,0 +1,207 @@
+/* =========================
+   Skills
+   ========================= */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.skill-card {
+    padding: 16px 18px;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+
+    font-weight: 600;
+}
+
+.skill-category {
+    margin-bottom: 12px;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #6b7280;
+}
+
+
+/* =========================
+   Experience
+   ========================= */
+
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.experience-item {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.experience-item:last-child {
+    border-bottom: none;
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 8px;
+}
+
+.experience-role {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.experience-company {
+    color: #4b5563;
+    font-weight: 600;
+}
+
+.experience-date {
+    white-space: nowrap;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.experience-location {
+    margin-bottom: 15px;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.experience-description {
+    max-width: 800px;
+    color: #4b5563;
+}
+
+
+/* =========================
+   Projects
+   ========================= */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(280px, 1fr)
+    );
+
+    gap: 20px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 220px;
+    padding: 25px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+.project-card h3 {
+    margin-bottom: 12px;
+
+    font-size: 1.3rem;
+}
+
+.project-card p {
+    flex: 1;
+
+    margin-bottom: 20px;
+
+    color: #6b7280;
+}
+
+.project-link {
+    font-weight: 600;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   Education
+   ========================= */
+
+.education-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.education-item {
+    padding: 25px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+.education-institution {
+    margin-bottom: 6px;
+
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.education-degree {
+    color: #374151;
+    font-weight: 600;
+}
+
+.education-years {
+    margin-top: 8px;
+
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+
+/* =========================
+   Loading / Empty States
+   ========================= */
+
+.loading {
+    color: #6b7280;
+}
+
+.empty-state {
+    color: #6b7280;
+}
+
+
+/* =========================
+   Responsive Sections
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .experience-header {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .experience-date {
+        white-space: normal;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}

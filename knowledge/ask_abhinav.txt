@@ -1,0 +1,34 @@
+PROJECT: Ask Abhinav — AI Developer Portfolio
+
+Ask Abhinav is an AI-powered developer portfolio designed to provide
+recruiters with an interactive way to learn about Abhinav's professional
+background.
+
+The portfolio is implemented as a single-page website with a Python FastAPI
+backend.
+
+The backend uses PostgreSQL and SQLAlchemy to store structured portfolio
+information such as profile information, skills, experience, projects, and
+education.
+
+The frontend uses HTML, CSS, and JavaScript.
+
+The portfolio exposes REST APIs through FastAPI so that the frontend can
+retrieve portfolio information dynamically from the backend.
+
+The Ask Abhinav assistant uses Retrieval-Augmented Generation (RAG) to
+retrieve relevant information from Abhinav's portfolio knowledge base before
+generating an answer.
+
+The planned AI architecture uses LangChain, embeddings, Pinecone for vector
+search, and the Google Gemini API.
+
+The assistant is designed to answer questions about Abhinav's professional
+experience, technical skills, projects, and education.
+
+The assistant should use only information supported by the portfolio
+knowledge base and should avoid inventing experience, technologies,
+responsibilities, or achievements.
+
+If the available knowledge does not support an answer, the assistant should
+clearly state that the information is not available rather than guessing.

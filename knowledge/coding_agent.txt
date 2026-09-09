@@ -1,0 +1,43 @@
+PROJECT: Gemini Coding Agent
+
+The Gemini Coding Agent is an AI coding assistant built in Python using the
+Google Gemini API and function calling.
+
+The agent was designed to interact with a codebase through a set of tools.
+
+Implemented capabilities include:
+
+- Inspecting files and directories
+- Reading file contents
+- Editing and writing files
+- Executing Python files
+- Capturing program output
+- Capturing errors
+- Handling execution timeouts
+- Validating working-directory paths
+- Iteratively debugging implementation issues
+
+The agent uses a modular architecture with separate responsibilities for
+conversation management, prompt construction, tool registration, and tool
+execution.
+
+A Tool Registry and Tool Executor pattern was implemented to dynamically
+resolve and execute available tools.
+
+Python code execution uses subprocess-based execution with timeout handling
+and captures stdout, stderr, and exit-code information.
+
+The agent can follow an iterative debugging workflow:
+
+1. Inspect the source code.
+2. Execute the relevant program.
+3. Analyze runtime or syntax errors.
+4. Modify the implementation.
+5. Execute the program again.
+6. Continue iteratively toward a working implementation.
+
+Technologies used in the project include Python, Google Gemini API, Gemini
+function calling, LangChain, and LangGraph.
+
+The project was not completed as an MCP server. Do not claim that MCP or
+Model Context Protocol was implemented in this project.

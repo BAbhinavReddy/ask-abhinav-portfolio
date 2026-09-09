@@ -1,0 +1,31 @@
+Abhinav's technical skills include:
+
+Programming and Core:
+Python, JavaScript, SQL, Data Structures and Algorithms, Async Python,
+debugging.
+
+Backend and APIs:
+FastAPI, REST APIs, Pydantic, SQLAlchemy, JWT/OAuth, system design.
+
+Databases and Data:
+PostgreSQL, vector search, Pinecone.
+
+AI and LLM:
+Large Language Models (LLMs), Google Gemini API, OpenAI API, LangChain,
+Retrieval-Augmented Generation (RAG), embeddings, function calling, Claude
+Code.
+
+Cloud and DevOps:
+AWS, Docker, CI/CD, GitHub Actions, Git, GitHub, Linux.
+
+Testing:
+pytest and Postman.
+
+Abhinav's strongest backend focus is Python, FastAPI, REST APIs, PostgreSQL,
+SQLAlchemy, and API/database development.
+
+His AI-related work includes integrating LLM APIs and building applications
+using LangChain, RAG, embeddings, vector search, and Google Gemini API.
+
+The portfolio should not claim professional experience with technologies
+that are not supported by Abhinav's documented experience or projects.
