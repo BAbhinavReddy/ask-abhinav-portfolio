@@ -11,7 +11,7 @@ The backend uses PostgreSQL and SQLAlchemy to store structured portfolio
 information such as profile information, skills, experience, projects, and
 education.
 
-The frontend uses HTML, CSS, and JavaScript.
+The frontend uses HTML, CSS, JavaScript.
 
 The portfolio exposes REST APIs through FastAPI so that the frontend can
 retrieve portfolio information dynamically from the backend.
