@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, String
+from sqlalchemy import Integer, String, Float
 from sqlalchemy.orm import Mapped, mapped_column
 
 from backend.app.db.database import Base
@@ -26,6 +26,11 @@ class Education(Base):
     field_of_study: Mapped[str] = mapped_column(
         String(200),
         nullable=False,
+    )
+
+    gpa: Mapped[float | None] = mapped_column(
+        Float,
+        nullable=True,
     )
 
     start_year: Mapped[int] = mapped_column(

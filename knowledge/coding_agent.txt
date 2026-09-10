@@ -1,43 +1,90 @@
-PROJECT: Gemini Coding Agent
+PROJECT: GEMINI CODING AGENT
 
-The Gemini Coding Agent is an AI coding assistant built in Python using the
-Google Gemini API and function calling.
+Gemini Coding Agent is an AI coding assistant built in Python using the
+Google Gemini API and function calling. The agent interacts with a codebase
+through a controlled set of tools for inspecting, modifying, and executing
+code.
 
-The agent was designed to interact with a codebase through a set of tools.
+CORE CAPABILITIES
 
-Implemented capabilities include:
+- Inspect files and directories
+- Read file contents
+- Create and modify files
+- Execute Python files
+- Capture stdout, stderr, and exit codes
+- Handle execution timeouts
+- Validate working-directory paths
+- Iteratively debug coding issues
 
-- Inspecting files and directories
-- Reading file contents
-- Editing and writing files
-- Executing Python files
-- Capturing program output
-- Capturing errors
-- Handling execution timeouts
-- Validating working-directory paths
-- Iteratively debugging implementation issues
+AGENT ARCHITECTURE
 
-The agent uses a modular architecture with separate responsibilities for
-conversation management, prompt construction, tool registration, and tool
-execution.
+The agent uses a modular architecture with separate components for:
 
-A Tool Registry and Tool Executor pattern was implemented to dynamically
-resolve and execute available tools.
+- Conversation management
+- Prompt construction
+- Tool registration
+- Tool execution
+- Agent orchestration
 
-Python code execution uses subprocess-based execution with timeout handling
-and captures stdout, stderr, and exit-code information.
+A Tool Registry maps available tool names to their Python implementations.
+The Tool Executor resolves Gemini function calls, executes the requested tool,
+and returns the result to Gemini.
 
-The agent can follow an iterative debugging workflow:
+The available tools provide file inspection, file reading, file writing, and
+Python code execution capabilities.
 
-1. Inspect the source code.
-2. Execute the relevant program.
-3. Analyze runtime or syntax errors.
-4. Modify the implementation.
-5. Execute the program again.
-6. Continue iteratively toward a working implementation.
+PYTHON CODE EXECUTION
 
-Technologies used in the project include Python, Google Gemini API, Gemini
-function calling, LangChain, and LangGraph.
+Python programs are executed using subprocess with:
 
-The project was not completed as an MCP server. Do not claim that MCP or
-Model Context Protocol was implemented in this project.
+- Working-directory control
+- Execution timeout handling
+- stdout capture
+- stderr capture
+- Exit-code handling
+
+Execution results are returned to Gemini so the agent can analyze actual
+program behavior and errors.
+
+ITERATIVE DEBUGGING
+
+The agent supports an iterative debugging workflow:
+
+Inspect code
+→ Execute program
+→ Analyze errors
+→ Modify code
+→ Execute again
+→ Verify result
+
+This allows the agent to respond to runtime and syntax errors instead of
+simply generating code and assuming it works.
+
+GEMINI FUNCTION CALLING
+
+Gemini determines when a tool is required and generates a function call with
+the necessary arguments. The Python application executes the requested tool
+and sends the result back to Gemini.
+
+The interaction is:
+
+Gemini → Function Call → Tool → Tool Result → Gemini
+
+TECHNOLOGIES
+
+- Python
+- Google Gemini API
+- Gemini 2.5 Flash
+- Gemini Function Calling
+- LangChain
+- LangGraph
+- AI Agent Architecture
+- Tool Calling
+- Prompt Engineering
+- Python subprocess
+- File-System Operations
+- Path Validation
+- Error Handling
+- Git
+- GitHub
+- Python Virtual Environments

@@ -1,34 +1,184 @@
-PROJECT: Ask Abhinav — AI Developer Portfolio
+PROJECT: ASK ABHINAV — AI DEVELOPER PORTFOLIO
 
-Ask Abhinav is an AI-powered developer portfolio designed to provide
-recruiters with an interactive way to learn about Abhinav's professional
-background.
+Ask Abhinav is an AI-powered developer portfolio designed to give recruiters
+an interactive way to learn about Abhinav's professional background,
+technical skills, projects, education, and experience.
 
-The portfolio is implemented as a single-page website with a Python FastAPI
-backend.
+The project combines a single-page web application with a Python FastAPI
+backend, PostgreSQL database, REST APIs, and an AI-powered conversational
+assistant.
 
-The backend uses PostgreSQL and SQLAlchemy to store structured portfolio
-information such as profile information, skills, experience, projects, and
-education.
+PORTFOLIO APPLICATION
 
-The frontend uses HTML, CSS, JavaScript.
+The frontend is implemented using:
 
-The portfolio exposes REST APIs through FastAPI so that the frontend can
-retrieve portfolio information dynamically from the backend.
+- HTML
+- CSS
+- JavaScript
 
-The Ask Abhinav assistant uses Retrieval-Augmented Generation (RAG) to
-retrieve relevant information from Abhinav's portfolio knowledge base before
-generating an answer.
+The website provides sections for Abhinav's profile, skills, professional
+experience, projects, education, and the Ask Abhinav AI assistant.
 
-The planned AI architecture uses LangChain, embeddings, Pinecone for vector
-search, and the Google Gemini API.
+The JavaScript frontend communicates with the FastAPI backend through REST
+APIs and dynamically retrieves portfolio information.
 
-The assistant is designed to answer questions about Abhinav's professional
-experience, technical skills, projects, and education.
+BACKEND
 
-The assistant should use only information supported by the portfolio
-knowledge base and should avoid inventing experience, technologies,
-responsibilities, or achievements.
+The backend is built with Python and FastAPI.
 
-If the available knowledge does not support an answer, the assistant should
-clearly state that the information is not available rather than guessing.
+FastAPI provides REST endpoints for retrieving portfolio information such as:
+
+- Profile
+- Skills
+- Experience
+- Projects
+- Education
+
+The backend uses Pydantic for API request and response validation.
+
+DATABASE
+
+PostgreSQL is used as the relational database for structured portfolio
+information.
+
+SQLAlchemy provides the ORM layer between the Python backend and PostgreSQL.
+
+The database stores information such as:
+
+- Profile
+- Skills
+- Experience
+- Projects
+- Education
+
+This makes the portfolio database-driven rather than hardcoding portfolio
+content directly into the frontend.
+
+AI ASSISTANT
+
+The Ask Abhinav assistant allows recruiters to ask natural-language questions
+about Abhinav.
+
+Example questions include:
+
+- What backend experience does Abhinav have?
+- What technologies does he use?
+- Tell me about CareerFlow AI.
+- What projects has he built?
+- What experience does he have with FastAPI?
+
+The assistant uses Retrieval-Augmented Generation (RAG) to retrieve relevant
+portfolio information before generating an answer.
+
+RAG WORKFLOW
+
+Recruiter Question
+→ Generate Embedding
+→ Pinecone Vector Search
+→ Retrieve Relevant Portfolio Context
+→ LangChain
+→ Google Gemini
+→ Grounded Answer
+
+The portfolio knowledge base contains information about Abhinav's profile,
+skills, experience, education, and projects.
+
+VECTOR SEARCH AND EMBEDDINGS
+
+The RAG system uses embeddings to convert portfolio knowledge and recruiter
+questions into numerical vector representations.
+
+Pinecone is used as the vector database for storing and searching these
+embeddings.
+
+Semantic vector search retrieves portfolio information that is relevant to
+the recruiter's question.
+
+LANGCHAIN AND GEMINI
+
+LangChain is used as part of the AI/RAG workflow for coordinating embeddings,
+retrieval, context, prompts, and LLM generation.
+
+Google Gemini is used as the language model for generating responses based on
+the retrieved portfolio context.
+
+GROUNDING
+
+The assistant is designed to keep responses grounded in the portfolio
+knowledge base.
+
+It should not invent:
+
+- Experience
+- Technologies
+- Responsibilities
+- Companies
+- Projects
+- Achievements
+- Education
+
+If the available portfolio knowledge does not support an answer, the
+assistant should clearly state that the information is not available rather
+than guessing.
+
+DEPLOYMENT AND DEVELOPMENT
+
+The application is designed to be containerized with Docker and deployed to
+AWS using a Linux-based environment.
+
+GitHub Actions is used for CI/CD workflows, including automated testing and
+application build/deployment processes.
+
+pytest is used for automated backend testing, while Postman and Swagger/
+OpenAPI can be used for API testing and validation.
+
+TECHNOLOGIES
+
+Frontend:
+- HTML
+- CSS
+- JavaScript
+
+Backend:
+- Python
+- FastAPI
+- REST APIs
+- Pydantic
+- SQLAlchemy
+
+Database:
+- PostgreSQL
+- Pinecone
+- Vector Search
+
+AI / LLM:
+- Google Gemini API
+- Gemini 2.5 Flash
+- LangChain
+- Retrieval-Augmented Generation (RAG)
+- Embeddings
+- Prompt Engineering
+
+DevOps / Cloud:
+- Docker
+- AWS
+- GitHub Actions
+- CI/CD
+- Linux
+
+Testing / Tools:
+- pytest
+- Postman
+- Swagger/OpenAPI
+- Git
+- GitHub
+
+PROJECT FOCUS
+
+Ask Abhinav demonstrates the combination of Python backend engineering,
+database-driven application development, REST API design, frontend/backend
+integration, and practical AI/LLM engineering.
+
+The project demonstrates how a traditional developer portfolio can be
+extended with a RAG-powered conversational assistant that retrieves
+portfolio-specific information and uses an LLM to generate grounded answers.

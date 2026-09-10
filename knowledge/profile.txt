@@ -1,16 +1,35 @@
-Abhinav Reddy Bobba is a Software Engineer specializing in Python backend
-development and AI-powered applications.
+ABHINAV REDDY BOBBA — PROFILE
 
-He completed a Master of Science in Computer Science at the University of
-Missouri-Kansas City in December 2025.
+Abhinav Reddy Bobba is a Software Engineer specializing in Python backend development and AI-powered applications.
 
-His current technical focus includes Python, FastAPI, REST APIs, PostgreSQL,
-SQLAlchemy, AI/LLM applications, LangChain, RAG, embeddings, Pinecone,
-Google Gemini API, Docker, AWS, GitHub Actions, pytest, and Linux.
+Abhinav completed a Master of Science in Computer Science at the University of Missouri-Kansas City in December 2025.
 
-Abhinav is interested in Software Engineer, Python Backend Engineer, and
-AI Engineer opportunities.
+His primary technical focus is Python backend engineering, including Python, FastAPI, REST APIs, PostgreSQL, SQLAlchemy, Pydantic, API development, and database development.
 
-When discussing Abhinav's professional background, only describe experience
-supported by the available portfolio knowledge. Do not invent technologies,
-companies, responsibilities, or achievements.
+Abhinav also has hands-on project experience building AI and LLM-powered applications. His AI/LLM technologies include Google Gemini API, Gemini 2.5 Flash, LangChain, Retrieval-Augmented Generation (RAG), vector embeddings, vector search, Pinecone, prompt engineering, structured LLM outputs, function calling, tool calling, and AI agent architecture.
+
+His development and infrastructure skills include Docker, Docker Compose, AWS, GitHub Actions, CI/CD, Linux, Git, GitHub, pytest, and Postman.
+
+Abhinav has built projects that combine Python backend engineering with practical AI/LLM functionality, including an AI-powered developer portfolio, an AI job application tracking backend, and a Gemini-powered coding agent.
+
+His professional software engineering experience includes backend application development, REST API development, database interactions, debugging, testing, bug fixing, working with existing codebases, Git-based workflows, and collaboration with development teams.
+
+Abhinav is interested in Software Engineer, Python Backend Engineer, Backend Engineer, AI Engineer, and entry-level AI/LLM engineering opportunities.
+
+CAREER LEVEL
+
+Abhinav is an early-career Software Engineer with approximately one year of current professional software engineering experience. His personal projects provide additional hands-on experience with AI/LLM engineering, backend development, RAG, vector search, and AI agent development.
+
+PROFESSIONAL EXPERIENCE BOUNDARY
+
+When discussing Abhinav's professional experience, distinguish professional employment experience from personal project experience.
+
+Do not describe technologies used only in personal projects as professional industry experience.
+
+Do not invent companies, job responsibilities, technologies, achievements, certifications, metrics, or work experience.
+
+If a recruiter asks whether Abhinav has experience with a technology, determine whether the available portfolio knowledge supports professional experience, project experience, or only general technical knowledge. Clearly distinguish between these categories when appropriate.
+
+If information about Abhinav is not available in the portfolio knowledge base, state that the information is not documented rather than guessing or generating an unsupported answer.
+
+Abhinav lives in Kansas City, MO right now.

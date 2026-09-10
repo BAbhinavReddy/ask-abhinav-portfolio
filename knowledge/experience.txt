@@ -1,31 +1,95 @@
+ABHINAV REDDY BOBBA — PROFESSIONAL EXPERIENCE
+
 CURRENT EXPERIENCE
 
 Company: Intelligenie LLC
 Role: Software Engineer
-Start: February 2026
+Location: Kansas City, MO
+Start Date: February 2026
+Status: Present
 
 Abhinav works primarily on Python backend development, APIs, and databases.
 
-His responsibilities include working with Python backend systems, developing
-and modifying APIs, working with databases, debugging application issues,
-and making changes across different projects.
+His professional responsibilities at Intelligenie LLC include developing and maintaining Python backend systems, developing and modifying APIs, working with databases, debugging application issues, and making targeted changes across different software projects.
 
-His work involves understanding existing backend code, troubleshooting
-problems, implementing changes, and working with API and database components.
+His work involves understanding existing backend code and application behavior, troubleshooting software problems, reviewing errors and API behavior, implementing requested changes, and working with API and database components.
 
-The portfolio should not claim responsibilities or technologies beyond what
-is documented in this knowledge base.
+Abhinav works across different projects and codebases, adapting to different requirements and technical environments while completing assigned software engineering tasks.
 
+His responsibilities include:
+
+- Python backend development
+- REST API development and modification
+- Database-related development and maintenance
+- Debugging and troubleshooting backend issues
+- Reviewing application behavior and errors
+- Implementing changes to existing backend systems
+- Working with existing codebases
+- Testing and validating software changes
+- Using Git and GitHub for source-code management
+- Collaborating with development teams to understand requirements and complete assigned work
+
+His professional experience demonstrates practical exposure to backend software development, API development, database interactions, debugging, troubleshooting, testing, and working within existing software systems.
+
+PROFESSIONAL EXPERIENCE BOUNDARY — INTELLIGENIE
+
+When describing Abhinav's experience at Intelligenie LLC, the portfolio assistant should only claim responsibilities and technologies explicitly supported by the portfolio knowledge base.
+
+Do not automatically associate technologies from Abhinav's personal projects with his professional work at Intelligenie LLC.
+
+For example, the portfolio should not claim that Abhinav professionally uses LangChain, Pinecone, RAG, Google Gemini, AI agents, Docker, AWS, or GitHub Actions at Intelligenie unless professional experience with those technologies is explicitly documented.
+
+If asked about Abhinav's professional experience, distinguish between his employment experience and his personal project experience.
 
 PREVIOUS EXPERIENCE
 
-Company: EPAM Systems
+Company: EPAM Systems India Private Limited
 Role: Junior Software Engineer
+Location: Hyderabad, India
 Period: January 2023 – June 2023
 
-Abhinav worked as a Junior Software Engineer, gaining professional software
-engineering experience and working with software development concepts and
-engineering workflows.
+Abhinav worked as a Junior Software Engineer at EPAM Systems India Private Limited.
 
-Only information explicitly documented in the portfolio should be used when
-describing this experience.
+During this role, he gained professional software engineering experience and worked within a software development team and established engineering workflows.
+
+His documented experience includes working as part of a 20-person software development team supporting a high-volume catering platform and contributing to customer and order management functionality.
+
+He developed and maintained backend application functionality using ASP.NET MVC and Object-Oriented Programming (OOP) while following established development standards and guidance from senior engineers.
+
+His responsibilities included understanding requirements, completing assigned development tasks, troubleshooting software issues, assisting with testing and debugging, and working with other members of the development team.
+
+He participated in Scrum calls and Agile team meetings to communicate progress, discuss challenges, and coordinate development activities.
+
+He also worked through Git-based development workflows and incorporated constructive feedback and code-review guidance from senior developers.
+
+His documented responsibilities included:
+
+- Working as part of a 20-person software development team
+- Supporting customer and order management functionality
+- Developing and maintaining application functionality
+- Working with ASP.NET MVC
+- Applying Object-Oriented Programming (OOP)
+- Understanding and implementing assigned requirements
+- Troubleshooting software issues
+- Testing and debugging application functionality
+- Assisting with bug fixes and deployment activities
+- Participating in Scrum and Agile team meetings
+- Working through Git-based development workflows
+- Receiving and incorporating code-review feedback
+- Collaborating with other developers and team members
+
+PROFESSIONAL EXPERIENCE BOUNDARY — EPAM
+
+When describing Abhinav's EPAM experience, only use information explicitly documented in the portfolio knowledge base.
+
+Do not add Python, FastAPI, PostgreSQL, SQLAlchemy, LangChain, Gemini, RAG, Pinecone, Docker, AWS, or other technologies to his EPAM experience unless they are explicitly documented as part of that professional role.
+
+CAREER-LEVEL CONTEXT
+
+Abhinav is an early-career Software Engineer with approximately one year of current professional software engineering experience at Intelligenie LLC, combined with previous Junior Software Engineer experience at EPAM Systems India Private Limited.
+
+His professional experience should be distinguished from his personal project experience.
+
+His personal projects provide additional hands-on experience with Python backend engineering, FastAPI, PostgreSQL, SQLAlchemy, Google Gemini, LangChain, RAG, Pinecone, vector embeddings, AI agents, function calling, and related technologies.
+
+The portfolio assistant must not combine professional and project experience in a way that implies Abhinav used personal-project technologies professionally.

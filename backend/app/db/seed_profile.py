@@ -9,12 +9,13 @@ profile_data = {
     "title": "Software Engineer",
     "summary": (
         "Software Engineer specializing in Python backend development, "
-        "REST APIs, databases, and AI-powered applications."
+        "FastAPI, REST APIs, PostgreSQL, and AI-powered applications, "
+        "with hands-on experience building LLM and RAG-based systems."
     ),
-    "email": "YOUR_EMAIL",
-    "phone": "YOUR_PHONE",
-    "github": "YOUR_GITHUB_URL",
-    "linkedin": "YOUR_LINKEDIN_URL",
+    "email": "abfdf@umsystem.edu",
+    "phone": "(945) 266-0136",
+    "github": "https://github.com/BAbhinavReddy",
+    "linkedin": "https://www.linkedin.com/in/abhinav-reddyb/",
 }
 
 

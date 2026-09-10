@@ -15,20 +15,26 @@ experiences = [
         "start_date": date(2026, 2, 1),
         "end_date": None,
         "description": (
-            "Developing and maintaining Python backend applications, "
-            "REST APIs, and database-driven services. Debugging issues, "
-            "implementing changes, and working across multiple software projects."
+            "Primarily working on Python backend development, REST APIs, "
+            "and database-related functionality. Developing and modifying "
+            "backend services, troubleshooting application issues, making "
+            "targeted changes across multiple software projects, and "
+            "working with existing codebases and development workflows."
         ),
     },
     {
-        "company": "EPAM Systems",
+        "company": "EPAM Systems India Private Limited",
         "role": "Junior Software Engineer",
         "location": "India",
         "start_date": date(2023, 1, 1),
         "end_date": date(2023, 6, 1),
         "description": (
-            "Worked on backend development using C#, .NET, REST APIs, "
-            "Entity Framework, PostgreSQL, Git, and Agile development practices."
+            "Worked as part of a 20-person software development team "
+            "supporting customer and order management functionality for "
+            "a high-volume catering platform. Developed and maintained "
+            "application functionality using ASP.NET MVC and Object-Oriented "
+            "Programming, while participating in Agile development, testing, "
+            "debugging, Git-based workflows, and code reviews."
         ),
     },
 ]

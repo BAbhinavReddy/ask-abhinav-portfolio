@@ -1,31 +1,69 @@
-PROJECT: CareerFlow AI API
+PROJECT: CAREERFLOW AI API
 
-CareerFlow AI API is a backend application designed to help users track job
-applications and analyze job descriptions using AI.
+CareerFlow AI API is a Python backend application designed to help users
+track job applications and analyze job descriptions using AI.
 
-The backend was built with Python and FastAPI.
+BACKEND
 
-The application uses PostgreSQL as its relational database and SQLAlchemy
-for database interaction.
+The backend is built with Python and FastAPI and provides REST API
+functionality for managing job application data and AI-powered analysis.
 
-Pydantic is used for request and response validation.
+PostgreSQL is used as the relational database, with SQLAlchemy providing
+database interaction through an ORM layer.
 
-The application includes authentication and protected API functionality.
+Pydantic is used for request and response validation, helping ensure that API
+data follows defined structures.
 
-A user can provide a job description, which is analyzed using a connected
-LLM API. The system extracts useful information from the job description,
-such as the role and required skills.
+AUTHENTICATION
+
+The application includes authentication and protected API functionality,
+allowing authenticated users to interact with protected backend resources.
+
+AI / LLM FEATURES
+
+Users can provide a job description for AI analysis.
+
+The system uses Google Gemini through the LangChain ecosystem to analyze
+unstructured job descriptions and extract useful information such as:
+
+- Job role
+- Required skills
+- Other relevant job information
 
 The project also includes functionality for evaluating how well a resume
 matches a job description.
 
-The AI integration uses Google Gemini through the LangChain ecosystem.
+The AI workflow is:
 
-The project demonstrates backend API development, database integration,
-Pydantic validation, authentication, and integration of AI capabilities into
-a Python backend application.
+Job Description
+→ LangChain
+→ Google Gemini
+→ Structured Analysis
 
-The project was primarily developed as a backend API rather than as a
-complete frontend application.
+Resume + Job Description
+→ AI Analysis
+→ Resume Match Assessment
 
-Do not claim technologies or capabilities that are not documented here.
+TECHNOLOGIES
+
+- Python
+- FastAPI
+- REST APIs
+- PostgreSQL
+- SQLAlchemy
+- Pydantic
+- Google Gemini
+- LangChain
+- Authentication
+- API Development
+- Database Integration
+
+PROJECT FOCUS
+
+CareerFlow AI API primarily demonstrates backend software engineering and
+practical AI integration. The project combines Python backend development,
+REST APIs, relational database integration, request/response validation,
+authentication, and LLM-powered job analysis.
+
+The project was primarily developed as a backend API rather than a complete
+frontend application.

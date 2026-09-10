@@ -1,18 +1,56 @@
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+const API_BASE_URL =
+    "http://127.0.0.1:8000/api";
 
+
+/* =========================
+   API Helper
+   ========================= */
 
 async function fetchAPI(endpoint) {
-    const response = await fetch(
-        `${API_BASE_URL}${endpoint}`
-    );
+
+    const response =
+        await fetch(
+            `${API_BASE_URL}${endpoint}`
+        );
+
 
     if (!response.ok) {
+
         throw new Error(
             `Request failed: ${response.status}`
         );
+
     }
 
+
     return response.json();
+
+}
+
+
+/* =========================
+   HTML Safety
+   ========================= */
+
+function escapeHTML(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
 }
 
 
@@ -21,39 +59,134 @@ async function fetchAPI(endpoint) {
    ========================= */
 
 async function loadProfile() {
+
     try {
-        const profile = await fetchAPI("/profile");
 
-        document.getElementById("hero-name").textContent =
-            profile.name;
+        const profile =
+            await fetchAPI("/profile");
 
-        document.getElementById("hero-title").textContent =
-            profile.title;
 
-        document.getElementById("hero-summary").textContent =
-            profile.summary;
+        /*
+         * Store the email globally so
+         * the email popup can use the
+         * database value.
+         */
 
-        document.getElementById("about-summary").textContent =
-            profile.summary;
+        portfolioEmail =
+            profile.email;
 
-        document.getElementById("email-link").href =
-            `mailto:${profile.email}`;
 
-        document.getElementById("phone-link").href =
-            `tel:${profile.phone}`;
+        const heroName =
+            document.getElementById(
+                "hero-name"
+            );
 
-        document.getElementById("github-link").href =
-            profile.github;
 
-        document.getElementById("linkedin-link").href =
-            profile.linkedin;
+        const heroTitle =
+            document.getElementById(
+                "hero-title"
+            );
+
+
+        const heroSummary =
+            document.getElementById(
+                "hero-summary"
+            );
+
+
+        const aboutSummary =
+            document.getElementById(
+                "about-summary"
+            );
+
+
+        if (heroName) {
+
+            heroName.textContent =
+                profile.name;
+
+        }
+
+
+        if (heroTitle) {
+
+            heroTitle.textContent =
+                profile.title;
+
+        }
+
+
+        if (heroSummary) {
+
+            heroSummary.textContent =
+                profile.summary;
+
+        }
+
+
+        if (aboutSummary) {
+
+            aboutSummary.textContent =
+                profile.summary;
+
+        }
+
+
+        /* =========================
+           Contact Links
+           ========================= */
+
+        const phoneLink =
+            document.getElementById(
+                "phone-link"
+            );
+
+
+        const githubLink =
+            document.getElementById(
+                "github-link"
+            );
+
+
+        const linkedinLink =
+            document.getElementById(
+                "linkedin-link"
+            );
+
+
+        if (phoneLink) {
+
+            phoneLink.dataset.phone =
+                profile.phone;
+
+        }
+
+
+        if (githubLink) {
+
+            githubLink.href =
+                profile.github;
+
+        }
+
+
+        if (linkedinLink) {
+
+            linkedinLink.href =
+                profile.linkedin;
+
+        }
+
 
     } catch (error) {
+
         console.error(
             "Failed to load profile:",
             error
         );
+
     }
+
 }
 
 
@@ -62,30 +195,154 @@ async function loadProfile() {
    ========================= */
 
 async function loadSkills() {
+
     try {
-        const skills = await fetchAPI("/skills");
+
+        const skills =
+            await fetchAPI("/skills");
+
 
         const container =
-            document.getElementById("skills-container");
+            document.getElementById(
+                "skills-container"
+            );
+
+
+        if (!container) {
+
+            return;
+
+        }
+
 
         container.innerHTML = "";
 
-        skills.forEach((skill) => {
-            const card = document.createElement("div");
 
-            card.className = "skill-card";
+        /*
+         * Group database skills
+         * by category.
+         */
 
-            card.textContent = skill.name;
+        const groupedSkills = {};
 
-            container.appendChild(card);
-        });
+
+        skills.forEach(
+            (skill) => {
+
+                const category =
+                    skill.category ||
+                    "Other";
+
+
+                if (
+                    !groupedSkills[category]
+                ) {
+
+                    groupedSkills[category] =
+                        [];
+
+                }
+
+
+                groupedSkills[category].push(
+                    skill
+                );
+
+            }
+        );
+
+
+        Object.entries(
+            groupedSkills
+        ).forEach(
+            ([category, categorySkills]) => {
+
+                const card =
+                    document.createElement(
+                        "article"
+                    );
+
+
+                card.className =
+                    "skill-card";
+
+
+                const categoryTitle =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                categoryTitle.className =
+                    "skill-category";
+
+
+                categoryTitle.textContent =
+                    category;
+
+
+                const skillsList =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                skillsList.className =
+                    "skill-list";
+
+
+                categorySkills.forEach(
+                    (skill) => {
+
+                        const skillTag =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        skillTag.className =
+                            "skill-tag";
+
+
+                        skillTag.textContent =
+                            skill.name;
+
+
+                        skillsList.appendChild(
+                            skillTag
+                        );
+
+                    }
+                );
+
+
+                card.appendChild(
+                    categoryTitle
+                );
+
+
+                card.appendChild(
+                    skillsList
+                );
+
+
+                container.appendChild(
+                    card
+                );
+
+            }
+        );
+
 
     } catch (error) {
+
         console.error(
             "Failed to load skills:",
             error
         );
+
     }
+
 }
 
 
@@ -94,64 +351,121 @@ async function loadSkills() {
    ========================= */
 
 async function loadExperience() {
+
     try {
+
         const experiences =
-            await fetchAPI("/experience");
+            await fetchAPI(
+                "/experience"
+            );
+
 
         const container =
-            document.getElementById("experience-container");
+            document.getElementById(
+                "experience-container"
+            );
+
+
+        if (!container) {
+
+            return;
+
+        }
+
 
         container.innerHTML = "";
 
-        experiences.forEach((experience) => {
-            const item =
-                document.createElement("article");
 
-            item.className = "experience-item";
+        experiences.forEach(
+            (experience) => {
 
-            const startDate =
-                formatDate(experience.start_date);
+                const item =
+                    document.createElement(
+                        "article"
+                    );
 
-            const endDate =
-                experience.end_date
-                    ? formatDate(experience.end_date)
-                    : "Present";
 
-            item.innerHTML = `
-                <div class="experience-header">
-                    <div>
-                        <div class="experience-role">
-                            ${experience.role}
+                item.className =
+                    "experience-item";
+
+
+                const startDate =
+                    formatDate(
+                        experience.start_date
+                    );
+
+
+                const endDate =
+                    experience.end_date
+                        ? formatDate(
+                            experience.end_date
+                        )
+                        : "Present";
+
+
+                item.innerHTML = `
+
+                    <div class="experience-header">
+
+                        <div>
+
+                            <div class="experience-role">
+                                ${escapeHTML(
+                                    experience.role
+                                )}
+                            </div>
+
+                            <div class="experience-company">
+                                ${escapeHTML(
+                                    experience.company
+                                )}
+                            </div>
+
                         </div>
 
-                        <div class="experience-company">
-                            ${experience.company}
+
+                        <div class="experience-date">
+                            ${escapeHTML(startDate)}
+                            –
+                            ${escapeHTML(endDate)}
                         </div>
+
                     </div>
 
-                    <div class="experience-date">
-                        ${startDate} – ${endDate}
+
+                    <div class="experience-location">
+                        ${escapeHTML(
+                            experience.location
+                        )}
                     </div>
-                </div>
 
-                <div class="experience-location">
-                    ${experience.location}
-                </div>
 
-                <p class="experience-description">
-                    ${experience.description}
-                </p>
-            `;
+                    <p class="experience-description">
+                        ${escapeHTML(
+                            experience.description
+                        )}
+                    </p>
 
-            container.appendChild(item);
-        });
+                `;
+
+
+                container.appendChild(
+                    item
+                );
+
+            }
+        );
+
 
     } catch (error) {
+
         console.error(
             "Failed to load experience:",
             error
         );
+
     }
+
 }
 
 
@@ -160,56 +474,141 @@ async function loadExperience() {
    ========================= */
 
 async function loadProjects() {
+
     try {
+
         const projects =
-            await fetchAPI("/projects");
+            await fetchAPI(
+                "/projects"
+            );
+
 
         const container =
-            document.getElementById("projects-container");
+            document.getElementById(
+                "projects-container"
+            );
+
+
+        if (!container) {
+
+            return;
+
+        }
+
 
         container.innerHTML = "";
 
-        projects.forEach((project) => {
-            const card =
-                document.createElement("article");
 
-            card.className = "project-card";
+        projects.forEach(
+            (project) => {
 
-            const githubLink =
-                project.github_url
-                    ? `
-                        <a
-                            class="project-link"
-                            href="${project.github_url}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View on GitHub →
-                        </a>
-                    `
-                    : "";
+                const card =
+                    document.createElement(
+                        "article"
+                    );
 
-            card.innerHTML = `
-                <h3>
-                    ${project.name}
-                </h3>
 
-                <p>
-                    ${project.description}
-                </p>
+                card.className =
+                    "project-card";
 
-                ${githubLink}
-            `;
 
-            container.appendChild(card);
-        });
+                const githubLink =
+                    project.github_url
+                        ? `
+                            <a
+                                class="project-link"
+                                href="${escapeHTML(
+                                    project.github_url
+                                )}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View on GitHub →
+                            </a>
+                        `
+                        : "";
+
+
+                card.innerHTML = `
+
+                    <h3>
+                        ${escapeHTML(
+                            project.name
+                        )}
+                    </h3>
+
+
+                    <p>
+                        ${escapeHTML(
+                            project.description
+                        )}
+                    </p>
+
+
+                    ${githubLink}
+
+                `;
+
+
+                container.appendChild(
+                    card
+                );
+
+            }
+        );
+
 
     } catch (error) {
+
         console.error(
             "Failed to load projects:",
             error
         );
+
     }
+
+}
+
+
+/* =========================
+   Education Logo
+   ========================= */
+
+function getEducationLogo(
+    institution
+) {
+
+    const normalizedInstitution =
+        institution.toLowerCase();
+
+
+    if (
+        normalizedInstitution.includes(
+            "missouri-kansas"
+        ) ||
+        normalizedInstitution.includes(
+            "university of missouri"
+        )
+    ) {
+
+        return "assets/images/umkc-logo.png";
+
+    }
+
+
+    if (
+        normalizedInstitution.includes(
+            "vidya jyothi"
+        )
+    ) {
+
+        return "assets/images/vjit-logo.png";
+
+    }
+
+
+    return null;
+
 }
 
 
@@ -218,45 +617,150 @@ async function loadProjects() {
    ========================= */
 
 async function loadEducation() {
+
     try {
+
         const education =
-            await fetchAPI("/education");
+            await fetchAPI(
+                "/education"
+            );
+
 
         const container =
-            document.getElementById("education-container");
+            document.getElementById(
+                "education-container"
+            );
+
+
+        if (!container) {
+
+            return;
+
+        }
+
 
         container.innerHTML = "";
 
-        education.forEach((item) => {
-            const element =
-                document.createElement("article");
 
-            element.className = "education-item";
+        education.forEach(
+            (item) => {
 
-            element.innerHTML = `
-                <div class="education-institution">
-                    ${item.institution}
-                </div>
+                const element =
+                    document.createElement(
+                        "article"
+                    );
 
-                <div class="education-degree">
-                    ${item.degree}
-                    — ${item.field_of_study}
-                </div>
 
-                <div class="education-years">
-                    ${item.start_year} – ${item.end_year ?? "Present"}
-                </div>
-            `;
+                element.className =
+                    "education-item";
 
-            container.appendChild(element);
-        });
+
+                const logo =
+                    getEducationLogo(
+                        item.institution
+                    );
+
+
+                const logoHTML =
+                    logo
+                        ? `
+                            <div class="education-logo">
+
+                                <img
+                                    src="${logo}"
+                                    alt="${escapeHTML(
+                                        item.institution
+                                    )} logo"
+                                >
+
+                            </div>
+                        `
+                        : "";
+
+
+                const endYear =
+                    item.end_year ??
+                    "Present";
+
+
+                const gpaHTML =
+                    item.gpa !== null &&
+                    item.gpa !== undefined
+                        ? `
+                            <span>
+                                GPA:
+                                ${escapeHTML(
+                                    item.gpa
+                                )}
+                            </span>
+                        `
+                        : "";
+
+
+                element.innerHTML = `
+
+                    ${logoHTML}
+
+
+                    <div class="education-details">
+
+                        <div class="education-institution">
+                            ${escapeHTML(
+                                item.institution
+                            )}
+                        </div>
+
+
+                        <div class="education-degree">
+                            ${escapeHTML(
+                                item.degree
+                            )}
+                            —
+                            ${escapeHTML(
+                                item.field_of_study
+                            )}
+                        </div>
+
+
+                        <div class="education-years">
+
+                            <span>
+                                ${escapeHTML(
+                                    item.start_year
+                                )}
+                                –
+                                ${escapeHTML(
+                                    endYear
+                                )}
+                            </span>
+
+
+                            ${gpaHTML}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(
+                    element
+                );
+
+            }
+        );
+
 
     } catch (error) {
+
         console.error(
             "Failed to load education:",
             error
         );
+
     }
+
 }
 
 
@@ -264,8 +768,31 @@ async function loadEducation() {
    Date Formatting
    ========================= */
 
-function formatDate(dateString) {
-    const date = new Date(dateString);
+function formatDate(
+    dateString
+) {
+
+    if (!dateString) {
+
+        return "";
+
+    }
+
+
+    const date =
+        new Date(dateString);
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return dateString;
+
+    }
+
 
     return date.toLocaleDateString(
         "en-US",
@@ -274,6 +801,7 @@ function formatDate(dateString) {
             year: "numeric",
         }
     );
+
 }
 
 
@@ -284,10 +812,16 @@ function formatDate(dateString) {
 document.addEventListener(
     "DOMContentLoaded",
     () => {
+
         loadProfile();
+
         loadSkills();
+
         loadExperience();
+
         loadProjects();
+
         loadEducation();
+
     }
 );

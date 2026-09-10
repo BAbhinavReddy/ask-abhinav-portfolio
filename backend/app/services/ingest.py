@@ -84,6 +84,13 @@ def ingest():
             }
         )
 
+    index.delete(
+        delete_all=True,
+        namespace="portfolio",
+    )
+
+    print("Cleared existing portfolio vectors.")
+
     index.upsert(
         vectors=pinecone_vectors,
         namespace="portfolio",

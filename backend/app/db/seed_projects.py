@@ -7,30 +7,41 @@ from backend.app.models.project import Project
 
 projects = [
     {
+        "name": "Ask Abhinav — AI Developer Portfolio",
+        "description": (
+            "AI-powered developer portfolio built with Python, FastAPI, "
+            "PostgreSQL, and JavaScript, featuring a recruiter-focused "
+            "conversational assistant using LangChain, Google Gemini, "
+            "Retrieval-Augmented Generation (RAG), embeddings, and Pinecone "
+            "to retrieve portfolio knowledge and generate grounded answers."
+        ),
+        "github_url": "https://github.com/BAbhinavReddy/ask-abhinav-portfolio",
+    },
+
+    {
+            "name": "Gemini Coding Agent",
+            "description": (
+                "AI coding assistant built with Python and Google Gemini that "
+                "uses function calling and a modular tool architecture to inspect "
+                "files, modify code, execute Python programs, capture execution "
+                "results, and iteratively debug implementation issues."
+            ),
+            "github_url": "https://github.com/BAbhinavReddy/gemini-coding-agent",
+        },
+
+    {
         "name": "CareerFlow AI API",
         "description": (
-            "AI-powered backend API for tracking job applications, "
-            "analyzing job descriptions, and evaluating resume-to-job fit."
+            "Python and FastAPI backend for tracking job applications, "
+            "analyzing job descriptions, and evaluating resume-to-job fit. "
+            "Uses PostgreSQL, SQLAlchemy, Pydantic, authentication, "
+            "LangChain, and Google Gemini to provide AI-powered job analysis "
+            "and resume matching."
         ),
-        "github_url": None,
+        "github_url": "https://github.com/BAbhinavReddy/careerflow-ai-api",
     },
-    {
-        "name": "Gemini Coding Agent",
-        "description": (
-            "Autonomous AI coding agent capable of inspecting a codebase, "
-            "modifying files, executing Python code, and iteratively debugging "
-            "implementation issues."
-        ),
-        "github_url": None,
-    },
-    {
-        "name": "Ask Abhinav",
-        "description": (
-            "AI-powered developer portfolio combining a database-driven "
-            "single-page website with a recruiter-focused conversational assistant."
-        ),
-        "github_url": None,
-    },
+
+    
 ]
 
 

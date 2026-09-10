@@ -8,5 +8,6 @@ class EducationResponse(BaseModel):
     institution: str
     degree: str
     field_of_study: str
+    gpa: float | None
     start_year: int
     end_year: int | None
