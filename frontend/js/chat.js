@@ -39,7 +39,7 @@ const chatMessages =
 
 
 const ASK_API_URL =
-    "http://127.0.0.1:8000/api/ask";
+    "api/ask";
 
 
 /* =========================

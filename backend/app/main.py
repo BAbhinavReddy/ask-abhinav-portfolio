@@ -1,4 +1,8 @@
+from pathlib import Path
+
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 from backend.app.api.health import router as health_router
 from backend.app.api.profile import router as profile_router
@@ -16,16 +20,41 @@ app = FastAPI(
     version="1.0.0",
 )
 
+BASE_DIR = Path(__file__).resolve().parents[2]
+FRONTEND_DIR = BASE_DIR / "frontend"
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://127.0.0.1:5500",
-        "http://localhost:5500",
-    ],
+#    allow_origins=[
+#       "http://127.0.0.1:5500",
+#       "http://localhost:5500",
+#   ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.mount(
+    "/css",
+    StaticFiles(directory=FRONTEND_DIR / "css"),
+    name="css",
+)
+
+app.mount(
+    "/js",
+    StaticFiles(directory=FRONTEND_DIR / "js"),
+    name="js",
+)
+
+app.mount(
+    "/assets",
+    StaticFiles(directory=FRONTEND_DIR / "assets"),
+    name="assets",
+)
+
+@app.get("/", include_in_schema=False)
+def serve_frontend():
+    return FileResponse(FRONTEND_DIR / "index.html")
 
 
 app.include_router(
