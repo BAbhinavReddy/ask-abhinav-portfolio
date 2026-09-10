@@ -1,0 +1,123 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_password
+          POSTGRES_DB: test_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U test_user -d test_db"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql://test_user:test_password@localhost:5432/test_db
+      GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      - name: Seed test database
+        run: |
+          python -m backend.app.db.seed_profile
+          python -m backend.app.db.seed_skills
+          python -m backend.app.db.seed_experience
+          python -m backend.app.db.seed_projects
+          python -m backend.app.db.seed_education
+
+      - name: Start FastAPI
+        run: |
+          nohup uvicorn backend.app.main:app \
+            --host 0.0.0.0 \
+            --port 8000 > server.log 2>&1 &
+
+          sleep 5
+
+      - name: Run tests
+        run: |
+          pytest -v
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -f backend/Dockerfile \
+            -t ask-abhinav:latest .
+
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+    needs: test
+
+    # Only deploy after a push to main.
+    # Pull requests run tests but do not deploy.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            set -e
+
+            cd ~/ask-abhinav-portfolio
+
+            echo "Pulling latest code..."
+            git pull origin main
+
+            echo "Building Docker image..."
+            docker build \
+              -f backend/Dockerfile \
+              -t ask-abhinav:latest .
+
+            echo "Stopping existing container..."
+            docker rm -f ask-abhinav 2>/dev/null || true
+
+            echo "Starting new container..."
+            docker run -d \
+              --name ask-abhinav \
+              --restart unless-stopped \
+              --env-file backend/.env \
+              -p 127.0.0.1:8000:8000 \
+              ask-abhinav:latest
+
+            echo "Waiting for application..."
+            sleep 5
+
+            echo "Checking application..."
+            curl -f http://127.0.0.1:8000/api/health
+
+            echo "Deployment successful!"
