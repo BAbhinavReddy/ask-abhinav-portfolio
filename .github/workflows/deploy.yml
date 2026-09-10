@@ -50,6 +50,7 @@ jobs:
 
       - name: Seed test database
         run: |
+          python -m backend.app.db.test_connection
           python -m backend.app.db.seed_profile
           python -m backend.app.db.seed_skills
           python -m backend.app.db.seed_experience
